@@ -22,6 +22,10 @@ namespace Utils
 			result = std::string(size, '\0');
 			f.read(result.data(), static_cast<long long>(size));
 		}
+		else
+		{
+			throw std::runtime_error("Unable to read the file.");
+		}
 		return result;
 	}
 

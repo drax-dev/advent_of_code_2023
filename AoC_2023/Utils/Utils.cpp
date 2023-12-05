@@ -16,7 +16,7 @@ namespace Utils
 	std::string read_file(const fs::path& path)
 	{
 		std::string result{};
-		if (std::ifstream f{path, std::ios::in | std::ios::binary})
+		if (std::ifstream f{ path, std::ios::in | std::ios::binary })
 		{
 			const auto size = file_size(path);
 			result = std::string(size, '\0');
@@ -58,7 +58,7 @@ namespace Utils
 
 	bool isNumber(const char c)
 	{
-		if(c >= '0' && c <= '9')
+		if (c >= '0' && c <= '9')
 		{
 			return true;
 		}
@@ -88,6 +88,41 @@ namespace Utils
 		{
 			const std::string str{ c };
 			return std::stoi(str);
+		}
+		catch (std::invalid_argument const& ex)
+		{
+			std::cout << "std::invalid_argument::what(): " << ex.what() << '\n';
+		}
+		catch (std::out_of_range const& ex)
+		{
+			std::cout << "std::out_of_range::what(): " << ex.what() << '\n';
+		}
+		return -1;
+	}
+
+	unsigned long long strToULL(const std::string& str)
+	{
+		try
+		{
+			return std::stoull(str);
+		}
+		catch (std::invalid_argument const& ex)
+		{
+			std::cout << "std::invalid_argument::what(): " << ex.what() << '\n';
+		}
+		catch (std::out_of_range const& ex)
+		{
+			std::cout << "std::out_of_range::what(): " << ex.what() << '\n';
+		}
+		return -1;
+	}
+
+	unsigned long long strToULL(const char c)
+	{
+		try
+		{
+			const std::string str{ c };
+			return std::stoull(str);
 		}
 		catch (std::invalid_argument const& ex)
 		{

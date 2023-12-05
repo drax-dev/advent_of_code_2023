@@ -14,4 +14,6 @@ namespace Utils
 	bool isNumber(char c);
 	int strToInt(const std::string& str);
 	int strToInt(char c);
+	unsigned long long strToULL(const std::string& str);
+	unsigned long long strToULL(char c);
 }

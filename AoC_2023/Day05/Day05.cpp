@@ -8,7 +8,7 @@ struct Range
 {
 	Range(const unsigned long long inputBegin, const unsigned long long length) : begin(inputBegin)
 	{
-		end = begin + length;
+		end = begin + length - 1;
 	}
 
 	unsigned long long begin;
@@ -243,7 +243,7 @@ unsigned long long processDataPart2()
 		{
 			if (seedRange.isInRange(result))
 			{
-				return i - 1; // idk why -1, but 79874952 was too high;
+				return i;
 			}
 		}
 	}
